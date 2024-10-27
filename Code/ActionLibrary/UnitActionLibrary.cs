@@ -91,7 +91,6 @@ namespace Unit
         }
 
 
-        // Gives unit a VIP pass to void 
         public static bool remove_unit(BaseSimObject pTarget, WorldTile pTile = null)
         {
             Actor a = ReflectionUtility.GetField<Actor>(pTarget, "a");
