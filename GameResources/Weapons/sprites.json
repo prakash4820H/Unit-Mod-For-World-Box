@@ -1,0 +1,48 @@
+{
+  "Default": {
+    "PivotX": 0.5,
+    "PivotY": 0.2,
+    "RectX": 0,
+    "RectY": 0,
+    "PixelsPerUnit": 1
+  },
+
+    "Specific":[{
+        "Path": "w_GiantAxe_adamantine.png",
+        "PivotX": 0.5,
+        "PivotY": 0.3,
+        "RectX": 0,
+        "RectY": 0,
+        "PixelsPerUnit": 1
+    }],
+
+   "Specific":[{
+        "Path": "w_RedStoneBow_adamantine.png",
+        "PivotX": 0.8,
+        "PivotY": 0.3,
+        "RectX": 0,
+        "RectY": 0,
+        "PixelsPerUnit": 1
+    }],
+
+   "Specific":[{
+        "Path": "w_WhiteSword_adamantine.png",
+        "PivotX": 0.6,
+        "PivotY": 0.1,
+        "PixelsPerUnit": 1
+    }],
+
+   "Specific":[{
+        "Path": "w_DragonSlayerSword_adamantine.png",
+        "PivotX": 1.3,
+        "PivotY": -0.2,
+        "PixelsPerUnit": 1
+    }],
+
+   "Specific":[{
+        "Path": "w_LichStaff_adamantine.png",
+        "PivotX": 0.6,
+        "PivotY": 0.3,
+        "PixelsPerUnit": 1
+    }]
+}
