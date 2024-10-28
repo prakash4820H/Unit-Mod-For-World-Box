@@ -78,13 +78,13 @@ namespace Unit
             DragonSlayer.ignoredByInfinityCoin = false;
             DragonSlayer.disableJumpAnimation = true;
             DragonSlayer.canBeMovedByPowers = true;
-            DragonSlayer.canTurnIntoZombie = false;
+            // DragonSlayer.canTurnIntoZombie = false;
             DragonSlayer.canAttackBuildings = true;
             DragonSlayer.hideFavoriteIcon = false;
-            DragonSlayer.can_edit_traits = true;
-            DragonSlayer.very_high_flyer = false;
-            DragonSlayer.damagedByOcean = false;
-            DragonSlayer.swampCreature = false;
+            //   DragonSlayer.can_edit_traits = true;
+            //  DragonSlayer.very_high_flyer = false;
+            //    DragonSlayer.damagedByOcean = false;
+            //   DragonSlayer.swampCreature = false;
             DragonSlayer.damagedByRain = false;
             DragonSlayer.oceanCreature = false;
             DragonSlayer.landCreature = true;
@@ -93,12 +93,12 @@ namespace Unit
             DragonSlayer.use_items = true;
             DragonSlayer.diet_meat = false;
             DragonSlayer.dieInLava = false;
-            DragonSlayer.needFood = false;
+            //  DragonSlayer.needFood = false;
             DragonSlayer.has_soul = true;
             DragonSlayer.flying = false;
             DragonSlayer.canBeCitizen = true;
             DragonSlayer.sound_hit = "event:/SFX/HIT/HitMetal";
-            DragonSlayer.action_liquid = new WorldAction(ActionLibrary.swimToIsland);
+            //     DragonSlayer.action_liquid = new WorldAction(ActionLibrary.swimToIsland);
             /*
             DragonSlayer.defaultWeapons = List.Of<string>(new string[]
            {  "DragonSlayerSword" });
@@ -109,7 +109,7 @@ namespace Unit
             //     DragonSlayer.animation_walk = "walk_0,walk_1,walk_2,walk_3";
             DragonSlayer.texture_path = "DragonSlayer";
             DragonSlayer.icon = "iconDragonSlayer";
-            DragonSlayer.job = "attacker";
+            //    DragonSlayer.job = "attacker";
             // Initialize all mobs with custom sprite orders
             AssetManager.actor_library.add(DragonSlayer);
             AssetManager.actor_library.CallMethod("loadShadow", DragonSlayer);

@@ -55,6 +55,7 @@
             hi.fundament = new BuildingFundament(1, 1, 1, 0);
             hi.grow_creep_direction_random_position = true;
             hi.has_ruin_state = false;
+            hi.canBePlacedOnlyOn = List.Of<string>(ST.lemon_low, ST.lemon_high, ST.jungle_low, ST.jungle_high, ST.grass_low, ST.grass_high, ST.mushroom_low, ST.mushroom_high, ST.enchanted_low, ST.enchanted_high, ST.savanna_low, ST.savanna_high, "biome_zelkova");
             hi.setShadow(0.19f, 0.03f, 0.09f);
             AssetManager.buildings.add(hi);
         }
