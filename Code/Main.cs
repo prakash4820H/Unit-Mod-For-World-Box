@@ -92,6 +92,7 @@ public class ModClass : MonoBehaviour, IMod
                 GojoSatoruTraits.Init();
                 UnitTraits.init();
                 SuppressorAura.Init();
+                LeaderTraitInit.Init();
 
             }
             //Biomes and Tiles
