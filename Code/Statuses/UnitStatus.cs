@@ -145,7 +145,8 @@ namespace Unit
             Actor a = Reflection.GetField(pTarget.GetType(), pTarget, "a") as Actor;
             if (Toolbox.randomChance(0.5f))
             {
-                a.animationContainer = ActorAnimationLoader.loadAnimationUnit("actors/t_wolf", a.asset);
+                a.animationContainer = ActorAnimationLoader.loadAnimationUnit("actors/unit_human", a.asset);
+                a.dirty_sprite_head = true;
             }
             else if (Toolbox.randomChance(0.5f))
                 a.checkSpriteHead();
