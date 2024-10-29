@@ -24,7 +24,7 @@ namespace Unit
                 return false;
             }
 
-            return true; // Continue with the original method
+            return true;
         }
 
         [HarmonyPatch(typeof(CityBehCheckPopPoints), "execute")]

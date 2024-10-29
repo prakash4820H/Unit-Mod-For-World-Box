@@ -44,6 +44,9 @@ namespace Unit
 
             ActorAsset Snake1 = AssetManager.actor_library.get("greg");
             Snake1.use_items = true;
+
+            ActorAsset h = AssetManager.actor_library.get("unit_human");
+            h.texture_path = "ArchMage";
         }
 
         public static void create_DragonSlayer()
