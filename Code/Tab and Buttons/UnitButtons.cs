@@ -328,7 +328,7 @@ namespace Unit
             );
             PowerButtonCreator.AddButtonToTab(buttonGojoSatoru, UnitworldTab, new Vector2(352, -18));
 
-            #region spider
+
 
             var spider = new GodPower();
             spider.id = "spawnspider";
@@ -938,4 +938,3 @@ namespace Unit
     }
 
 }
-#endregion
