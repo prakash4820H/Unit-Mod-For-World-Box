@@ -163,7 +163,17 @@ namespace Unit
             if ((actor.has_status_frozen || Config.paused || MapBox.instance.isGameplayControlsLocked()) && currAnimState != "death")
             {
                 framePath = GetFrameBasedOnState(animationData, currAnimState, currFrame);
-                return GetSingleSprite(framePath);
+                Sprite pausedSprite = GetSingleSprite(framePath);
+                return UnitSpriteConstructor.getSpriteUnit(
+                    actor.frame_data,
+                    pausedSprite,
+                    actor,
+                    actor.kingdom.kingdomColor,  // Apply kingdom color even when paused
+                    actor.race,
+                    actor.data.skin_set,
+                    actor.data.skin,
+                    actor.asset.texture_atlas
+                );
             }
 
 

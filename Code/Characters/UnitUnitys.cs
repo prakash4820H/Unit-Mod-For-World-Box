@@ -45,7 +45,7 @@ namespace Unit
             ActorAsset Snake1 = AssetManager.actor_library.get("greg");
             Snake1.use_items = true;
 
-            ActorAsset h = AssetManager.actor_library.get("unit_human");
+            ActorAsset h = AssetManager.actor_library.get("snake");
             h.texture_path = "ArchMage";
         }
 
@@ -187,6 +187,11 @@ namespace Unit
             spider.base_stats[S.targets] = 5;
             spider.base_stats[S.dodge] = 0.5f;
             spider.base_stats[S.armor] = 45;
+            // Hitbox-like visual adjustments
+            spider.hovering_min = 8f;
+            spider.hovering_max = 8f;
+            spider.flying = true;
+            spider.very_high_flyer = true;
             spider.base_stats[S.scale] = 0.12f;
             spider.immune_to_tumor = true;
             spider.immune_to_injuries = true;
@@ -201,7 +206,6 @@ namespace Unit
             spider.canAttackBuildings = true;
             spider.hideFavoriteIcon = false;
             spider.can_edit_traits = true;
-            spider.very_high_flyer = false;
             spider.damagedByOcean = false;
             spider.swampCreature = false;
             spider.damagedByRain = false;
@@ -214,7 +218,6 @@ namespace Unit
             spider.dieInLava = false;
             spider.needFood = false;
             spider.has_soul = true;
-            spider.flying = false;
             spider.canBeCitizen = true;
             spider.sound_hit = "event:/SFX/HIT/HitMetal";
             spider.action_liquid = new WorldAction(ActionLibrary.swimToIsland);
