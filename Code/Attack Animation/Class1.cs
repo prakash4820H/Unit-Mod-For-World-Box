@@ -211,7 +211,17 @@ namespace Unit
                     framePath = currentAttackSprites[currFrame];
                     actor.data.set("last_anim_frame_idx", currFrame);
                     actor.data.set("last_anim_state", currAnimState);
-                    return GetSingleSprite(framePath);
+                    Sprite attackSprite = GetSingleSprite(framePath);
+                    return UnitSpriteConstructor.getSpriteUnit(
+                        actor.frame_data,
+                        attackSprite,
+                        actor,
+                        actor.kingdom.kingdomColor,  // Ensure kingdom color applies during attack
+                        actor.race,
+                        actor.data.skin_set,
+                        actor.data.skin,
+                        actor.asset.texture_atlas
+                    );
                 }
             }
 
