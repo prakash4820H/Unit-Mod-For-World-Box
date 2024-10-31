@@ -45,6 +45,7 @@ namespace Unit
             ActorAsset Snake1 = AssetManager.actor_library.get("greg");
             Snake1.use_items = true;
 
+            // mobs which is not unit or not having heads can change texture
             ActorAsset h = AssetManager.actor_library.get("snake");
             h.texture_path = "ArchMage";
         }
