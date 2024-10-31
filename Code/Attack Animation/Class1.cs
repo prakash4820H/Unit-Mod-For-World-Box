@@ -184,6 +184,7 @@ namespace Unit
                 frameTimer = 0.0f;
                 currFrame++;
             }
+            //colour fixes
 
             // Save the updated frameTimer to actor.data
             actor.data.set("frame_timer", frameTimer);
