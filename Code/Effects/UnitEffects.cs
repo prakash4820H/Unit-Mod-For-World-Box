@@ -46,10 +46,10 @@ namespace Unit
 
             EffectAsset MC = new EffectAsset();
             MC.id = "fx_wind_trail_t";
-            // MC.prefab_id = "effects/prefabs/PrefabWave";
+            //MC.prefab_id = "effects/prefabs/PrefabWave";
             MC.use_basic_prefab = true;
             MC.sprite_path = "effects/fx_wind_trail_t";
-            //    MC.spawn_action = new EffectAction(spawnSimpleTile);
+            //MC.spawn_action = new EffectAction(spawnSimpleTile);
             MC.sorting_layer_id = "EffectsTop";
             MC.draw_light_area = true;
             MC.draw_light_size = 0.5f;

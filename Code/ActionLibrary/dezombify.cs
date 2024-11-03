@@ -69,14 +69,13 @@ public class DezombifyAction
                 infectedActorData[assetId] = data;
                 Debug.Log($"Tracked infected actor with Asset ID: {assetId}");
             }
-
             return true;
         }
-
         return false;
     }
 
     // Dezombify action to revert a zombie to its original state
+
     public static void DezombifyDropAction(WorldTile pTile = null, string pDropID = null)
     {
         if (pTile == null) return;

@@ -284,8 +284,12 @@ namespace Unit
             biometoallotocean.spread_biome = true;
             biometoallotocean.grow_strength = 10;
             biometoallotocean.spawn_units_auto = true;
-            biometoallotocean.addUnit(SA.piranha, 2);
+            biometoallotocean.addUnit(SA.piranha, 100);
+            biometoallotocean.addUnit(SA.piranha, 100);
+            biometoallotocean.addUnit(SA.piranha, 100);
             AssetManager.biome_library.add(biometoallotocean);
+            AssetManager.biome_library.addBiomeToPool(biometoallotocean);
+
 
 
             // Ensure TileTypes are initialized before assigning biomes

@@ -48,6 +48,9 @@ namespace Unit
             // mobs which is not unit or not having heads can change texture
             ActorAsset h = AssetManager.actor_library.get("snake");
             h.texture_path = "ArchMage";
+
+            ActorAsset h1 = AssetManager.actor_library.get("piranha");
+            h1.maxRandomAmount = 2;
         }
 
         public static void create_DragonSlayer()

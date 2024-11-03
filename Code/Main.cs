@@ -97,8 +97,8 @@ public class ModClass : MonoBehaviour, IMod
             }
             //Biomes and Tiles
             {
-                UnitBiomes.Init();
-                UnitBiomes.post_init_tiles();
+               UnitBiomes.Init();
+               UnitBiomes.post_init_tiles();
                 //     Patch_RemoveSmallBiomePatches.InitializeBiomes();
             }
             //Buildings

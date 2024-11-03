@@ -157,6 +157,7 @@ namespace Unit
             LocalizationUtility.AddLocalization("item_WhiteSword", "White Sword");
             addGunsSprite(WhiteSword.id, WhiteSword.materials[0]);
 
+
             ItemAsset GrandStaff = AssetManager.items.clone("GrandStaff", "_range");
             GrandStaff.id = "GrandStaff";
             GrandStaff.name_templates = Toolbox.splitStringIntoList(new string[]
