@@ -1,4 +1,3 @@
-
 using HarmonyLib;
 using NeoModLoader.api;
 using NeoModLoader.services;
@@ -6,64 +5,78 @@ using System;
 using System.Reflection;
 using UnityEngine;
 
-
-namespace Unit;
-
-public class ModClass : MonoBehaviour, IMod
+namespace Unit
 {
-
-    private ModDeclare _declare;
-    private GameObject _gameObject;
-
-    public ModDeclare GetDeclaration()
+    public class ModClass : MonoBehaviour, IMod
     {
-        return _declare;
-    }
-    public GameObject GetGameObject()
-    {
-        return _gameObject;
-    }
-    public string GetUrl()
-    {
-        return "URL of your mod's website or item page on workshop";
-    }
+        private ModDeclare _declare;
+        private GameObject _gameObject;
 
-    public void OnLoad(ModDeclare pModDecl, GameObject pGameObject)
-    {
+        // Property to get mod declaration and game object
+        public ModDeclare GetDeclaration() => _declare;
+        public GameObject GetGameObject() => _gameObject;
+        public string GetUrl() => "URL of your mod's website or item page on workshop";
 
-        _declare = pModDecl;
-        _gameObject = pGameObject;
-        // Initialize your mod.
-        // Methods are called in the order: OnLoad -> Awake -> OnEnable -> Start -> Update
-
-        LogService.LogInfo($"[{pModDecl.Name}]: Hello World!");
-    }
-
-    void Awake()
-    {
-        var harmony = new Harmony("com.prakash.unitmod");
-        var executingAssembly = Assembly.GetExecutingAssembly();
-        harmony.PatchAll(executingAssembly);
-        InitializeComponents();
-
-        GameObject gameObject = new GameObject("CP");
-        gameObject.AddComponent<CP>();
-        DontDestroyOnLoad(gameObject);
-    }
-
-    void Update()
-    {
-
-
-    }
-
-    void InitializeComponents()
-    {
-        try
+        // Main loading method for the mod
+        public void OnLoad(ModDeclare pModDecl, GameObject pGameObject)
         {
-            // Initialize Traits
+            _declare = pModDecl;
+            _gameObject = pGameObject;
+
+            LogService.LogInfo($"[{pModDecl.Name}]: Mod loading initiated.");
+        }
+
+        void Awake()
+        {
+            ApplyHarmonyPatches();
+            InitializeGameComponents();
+            InitializeModdedGameObject();
+        }
+
+        void Update()
+        {
+            // Reserved for periodic updates if needed in the future
+        }
+
+        // Function to apply Harmony patches
+        private void ApplyHarmonyPatches()
+        {
+            try
             {
-                // TimeTravelerTrait.Init();
+                var harmony = new Harmony("com.prakash.unitmod");
+                harmony.PatchAll(Assembly.GetExecutingAssembly());
+                LogService.LogInfo("[ModClass] Harmony patches applied successfully.");
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"[ModClass] Harmony patching failed: {ex.Message}");
+            }
+        }
+
+        // Initialize game components and traits
+        private void InitializeGameComponents()
+        {
+            try
+            {
+                InitializeTraits();
+                InitializeBiomesAndTiles();
+                InitializeBuildings();
+                InitializeOtherComponents();
+
+                LogService.LogInfo("[ModClass] Game components initialized successfully.");
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"[ModClass] Exception in InitializeGameComponents: {ex.Message}");
+                Debug.LogError($"Stack Trace: {ex.StackTrace}");
+            }
+        }
+
+        // Function to initialize mod-specific traits
+        private void InitializeTraits()
+        {
+            try
+            {
                 DisasterWaterMage.InitWaterMageDisaster();
                 WeaponCollectorTraitInit.Init();
                 TeleportationTraitInit.Init();
@@ -94,38 +107,87 @@ public class ModClass : MonoBehaviour, IMod
                 SuppressorAura.Init();
                 LeaderTraitInit.Init();
 
+                LogService.LogInfo("[ModClass] Traits initialized.");
             }
-            //Biomes and Tiles
+            catch (Exception ex)
             {
-               UnitBiomes.Init();
-               UnitBiomes.post_init_tiles();
-                //     Patch_RemoveSmallBiomePatches.InitializeBiomes();
+                Debug.LogError($"[ModClass] Error in InitializeTraits: {ex.Message}");
             }
-            //Buildings
+        }
+
+        // Function to initialize biomes and tile behaviors
+        private void InitializeBiomesAndTiles()
+        {
+            try
+            {
+                UnitBiomes.Init();
+                UnitBiomes.post_init_tiles();
+                UnitBiomes.post_init1();
+                WorldBehaviourAcidTiles.InitializeAcidSpreading();
+                WorldBehaviourBloodTiles.InitializeBloodSpreading();
+
+                LogService.LogInfo("[ModClass] Biomes and tile behaviors initialized.");
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"[ModClass] Error in InitializeBiomesAndTiles: {ex.Message}");
+            }
+        }
+
+        // Function to initialize buildings
+        private void InitializeBuildings()
+        {
+            try
             {
                 UnitBuildings.init();
+                LogService.LogInfo("[ModClass] Buildings initialized.");
             }
-            UnitNames.Init();
-            UnitTab.Init();
-            WorldBehaviourAcidTiles.InitializeAcidSpreading();
-            WorldBehaviourBloodTiles.InitializeBloodSpreading();
-            UnitButtons.init();
-            UnitItems.Init();
-            EffectsLibrary1.init();
-            UnitStatusLibrary.Init();
-            UnitUnitys.init();
-            UnitTraitGroup.init();
-            ExampleActorOverrideSprite.Init();
-            ModInitializerColorCycle.Init();
-            TraitReplicateEnemyPositiveTraits.Init();
-            UnitBiomes.post_init1();
-            DisasterWaterMage1.InitWaterMageDisaster();
-
+            catch (Exception ex)
+            {
+                Debug.LogError($"[ModClass] Error in InitializeBuildings: {ex.Message}");
+            }
         }
-        catch (Exception ex)
+
+        // Function to initialize remaining components
+        private void InitializeOtherComponents()
         {
-            Debug.LogError($"Exception in InitializeComponents: {ex.Message}");
-            Debug.LogError($"Stack Trace: {ex.StackTrace}");
+            try
+            {
+                UnitNames.Init();
+                UnitTab.Init();
+                UnitButtons.init();
+                UnitItems.Init();
+                EffectsLibrary1.init();
+                UnitStatusLibrary.Init();
+                UnitUnitys.init();
+                UnitTraitGroup.init();
+                ExampleActorOverrideSprite.Init();
+                ModInitializerColorCycle.Init();
+                TraitReplicateEnemyPositiveTraits.Init();
+                DisasterWaterMage1.InitWaterMageDisaster();
+
+                LogService.LogInfo("[ModClass] Other components initialized.");
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"[ModClass] Error in InitializeOtherComponents: {ex.Message}");
+            }
+        }
+
+        // Ensure mod object is persistent and initialize additional MonoBehaviour
+        private void InitializeModdedGameObject()
+        {
+            try
+            {
+                GameObject modObject = new GameObject("CP");
+                modObject.AddComponent<CP>();
+                DontDestroyOnLoad(modObject);
+                LogService.LogInfo("[ModClass] Modded GameObject initialized and set to persist.");
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"[ModClass] Error in InitializeModdedGameObject: {ex.Message}");
+            }
         }
     }
 }
