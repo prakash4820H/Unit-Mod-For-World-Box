@@ -78,6 +78,7 @@ namespace Unit
         {
             try
             {
+                UnitBehaviour1.init();
                 DisasterWaterMage.InitWaterMageDisaster();
                 WeaponCollectorTraitInit.Init();
                 TeleportationTraitInit.Init();
