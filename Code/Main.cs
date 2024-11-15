@@ -156,7 +156,6 @@ namespace Unit
             try
             {
                 UnitNames.Init();
-                InitializeTasks();
                 UnitTab.Init();
                 EstablishKingdomTraitInit.Init();
                 UnitButtons.init();
@@ -177,36 +176,6 @@ namespace Unit
                 Debug.LogError($"[ModClass] Error in InitializeOtherComponents: {ex.Message}");
             }
         }
-
-        private void InitializeTasks()
-        {
-            try
-            {
-                // Define a new task
-                BehaviourTaskActor establishKingdomTask = new BehaviourTaskActor
-                {
-                    id = "establish_kingdom"
-                };
-
-                // Configure behaviors for the task
-                establishKingdomTask.addBeh(new FindUnoccupiedTile());
-                establishKingdomTask.addBeh(new MoveToTile());
-                establishKingdomTask.addBeh(new CreateKingdom());
-
-                // Register the task with tasks_actor via AssetManager
-                AssetManager.tasks_actor.add(establishKingdomTask);
-
-                LogService.LogInfo("[ModClass] Custom tasks initialized.");
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError($"[ModClass] Error in InitializeTasks: {ex.Message}");
-                Debug.LogError($"Stack Trace: {ex.StackTrace}");
-            }
-        }
-
-
-
 
 
         // Ensure mod object is persistent and initialize additional MonoBehaviour

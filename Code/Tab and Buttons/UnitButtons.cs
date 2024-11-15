@@ -15,7 +15,7 @@ namespace Unit
 
             loadButtons();
         }
-
+        private const string WINDOW_ALIVE_UNITS_ID = "window_alive_units";
         private static void loadButtons()
         {
             PowersTab UnitworldTab = PowerButtonCreator.GetTab("Tab_Unit");
@@ -350,12 +350,13 @@ namespace Unit
             );
             PowerButtonCreator.AddButtonToTab(buttonspider, UnitworldTab, new Vector2(388, -18));
 
-            /*
+
+
             // Button setup in your UI code
             var allUnitsButton = new GodPower();
             allUnitsButton.id = "show_all_units";
             allUnitsButton.name = "Show All Units";
-            allUnitsButton.click_action = new PowerActionWithID(UnitButtons1.callShowAllUnitsWindow);
+            allUnitsButton.click_action = new PowerActionWithID(callShowAllUnitsWindow);
             AssetManager.powers.add(allUnitsButton);
 
             // Create the button and add it to the UI
@@ -363,11 +364,10 @@ namespace Unit
                 "show_all_units",
                 Resources.Load<Sprite>("ui/icons/iconCultureList.png"),
                 UnitworldTab.transform,
-                new Vector2(604, 18)
+                new Vector2(748, 18)
             );
-            PowerButtonCreator.AddButtonToTab(buttonAllUnits, UnitworldTab, new Vector2(604, 18));
+            PowerButtonCreator.AddButtonToTab(buttonAllUnits, UnitworldTab, new Vector2(748, 18));
 
-            */
 
             #region newone
 
@@ -777,6 +777,19 @@ namespace Unit
 
             // Add Button to the Tab
             PowerButtonCreator.AddButtonToTab(buttonBloodPool, UnitworldTab, new Vector2(712, 18));
+        }
+
+        // Updated method to match PowerActionWithID delegate signature
+        // Updated method to match PowerActionWithID delegate signature
+        public static bool callShowAllUnitsWindow(WorldTile pTile, string pPowerID)
+        {
+            // Only show the window if the correct power ID is triggered
+            if (pPowerID == "show_all_units")
+            {
+                ScrollWindow.showWindow(WINDOW_ALIVE_UNITS_ID);
+                return true;
+            }
+            return false;
         }
 
         public static void action_spawnBloodPoolTile(WorldTile pTile = null, string pDropID = null)

@@ -1,6 +1,5 @@
 ﻿using HarmonyLib;
 using System.Collections.Generic;
-using UnityEngine;
 
 [HarmonyPatch(typeof(WorldBehaviourActions), "updateUnitSpawn")]
 public static class UnitSpawnPatch
