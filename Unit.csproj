@@ -146,6 +146,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Code\Tests\" />
     <Folder Include="Code\Traits\Null\" />
     <Folder Include="Code\Weird stat stuff\" />
   </ItemGroup>

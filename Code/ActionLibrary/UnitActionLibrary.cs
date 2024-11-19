@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using UnityEngine;
 
 
@@ -46,6 +47,25 @@ namespace Unit
             }
             return false;
         }
+
+
+        public static bool action_blood_splash(WorldTile pTile, string pPowerID)
+        {
+            if (AssetManager.drops.get("bloodRain") == null)
+            {
+                UnityEngine.Debug.LogError("Drop asset 'blood' is not defined.");
+                return false;
+            }
+
+            int random = Toolbox.randomInt(10, 50); // Reduce for testing performance
+            for (int i = 0; i < random; i++)
+            {
+                World.world.dropManager.spawnParabolicDrop(
+                    pTile, "bloodRain", 2f, 0.2f, 1.2f, 0f, 4f, -1f);
+            }
+            return true;
+        }
+
 
         public static void removeTraitRain(WorldTile pTile, List<string> pList)
         {

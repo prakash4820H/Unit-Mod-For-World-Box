@@ -16,7 +16,7 @@ namespace Unit
         // Property to get mod declaration and game object
         public ModDeclare GetDeclaration() => _declare;
         public GameObject GetGameObject() => _gameObject;
-        public string GetUrl() => "URL of your mod's website or item page on workshop";
+        public string GetUrl() => "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 
         // Main loading method for the mod
         public void OnLoad(ModDeclare pModDecl, GameObject pGameObject)
@@ -155,6 +155,8 @@ namespace Unit
         {
             try
             {
+                AllUnitsWindow.init();
+                CreditsWindow.init();
                 UnitNames.Init();
                 UnitTab.Init();
                 EstablishKingdomTraitInit.Init();
@@ -168,7 +170,6 @@ namespace Unit
                 ModInitializerColorCycle.Init();
                 TraitReplicateEnemyPositiveTraits.Init();
                 DisasterWaterMage1.InitWaterMageDisaster();
-
                 LogService.LogInfo("[ModClass] Other components initialized.");
             }
             catch (Exception ex)

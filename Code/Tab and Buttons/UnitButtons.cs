@@ -1,4 +1,5 @@
-﻿using NeoModLoader.General;
+﻿
+using NeoModLoader.General;
 using ReflectionUtility;
 using System;
 using UnityEngine;
@@ -15,7 +16,6 @@ namespace Unit
 
             loadButtons();
         }
-        private const string WINDOW_ALIVE_UNITS_ID = "window_alive_units";
         private static void loadButtons()
         {
             PowersTab UnitworldTab = PowerButtonCreator.GetTab("Tab_Unit");
@@ -65,6 +65,8 @@ namespace Unit
              );
             PowerButtonCreator.AddButtonToTab(buttonMaleVampire, UnitworldTab, new Vector2(72, -18));
 
+
+
             var FeMaleVampire = new GodPower();
             FeMaleVampire.id = "spawnFeMaleVampire";
             FeMaleVampire.actorSpawnHeight = 3f;
@@ -104,6 +106,28 @@ namespace Unit
             new Vector2(112, -18)
             );
             PowerButtonCreator.AddButtonToTab(buttonSoulStealer, UnitworldTab, new Vector2(112, -18));
+
+
+            GodPower bloodSplashPower = new GodPower
+            {
+                id = "blood_splash",
+                name = "Blood Splash",
+                holdAction = true, 
+                forceBrush = "circ_1", 
+                showToolSizes = true,
+                click_action = new PowerActionWithID(UnitActionLibrary.action_blood_splash) 
+            };
+
+            AssetManager.powers.add(bloodSplashPower);
+
+            var bloodSplashButton = PowerButtonCreator.CreateGodPowerButton(
+                "blood_splash", 
+                Resources.Load<Sprite>("drops/drop_blood"), 
+                UnitworldTab.transform, 
+                new Vector2(676, -18) 
+            );
+
+            PowerButtonCreator.AddButtonToTab(bloodSplashButton, UnitworldTab, new Vector2(676, -18));
 
 
             var MageHunter = new GodPower();
@@ -322,7 +346,7 @@ namespace Unit
 
             var buttonGojoSatoru = PowerButtonCreator.CreateGodPowerButton(
             "spawnGojoSatoru",
-                         Resources.Load<Sprite>("units_embed/units/iconGojoSatoru.png"),
+            Resources.Load<Sprite>("units_embed/units/iconGojoSatoru.png"),
             UnitworldTab.transform,
             new Vector2(352, -18)
             );
@@ -350,23 +374,6 @@ namespace Unit
             );
             PowerButtonCreator.AddButtonToTab(buttonspider, UnitworldTab, new Vector2(388, -18));
 
-
-
-            // Button setup in your UI code
-            var allUnitsButton = new GodPower();
-            allUnitsButton.id = "show_all_units";
-            allUnitsButton.name = "Show All Units";
-            allUnitsButton.click_action = new PowerActionWithID(callShowAllUnitsWindow);
-            AssetManager.powers.add(allUnitsButton);
-
-            // Create the button and add it to the UI
-            var buttonAllUnits = PowerButtonCreator.CreateGodPowerButton(
-                "show_all_units",
-                Resources.Load<Sprite>("ui/icons/iconCultureList.png"),
-                UnitworldTab.transform,
-                new Vector2(748, 18)
-            );
-            PowerButtonCreator.AddButtonToTab(buttonAllUnits, UnitworldTab, new Vector2(748, 18));
 
 
             #region newone
@@ -413,13 +420,33 @@ namespace Unit
 
             var buttonZelkova = PowerButtonCreator.CreateGodPowerButton(
             "zelkova_drop",
-                         Resources.Load<Sprite>("units_embed/Icon/iconZelkova.png"),
+             Resources.Load<Sprite>("units_embed/Icon/iconZelkova.png"),
             UnitworldTab.transform,
             new Vector2(352, 18)
             );
             PowerButtonCreator.AddButtonToTab(buttonZelkova, UnitworldTab, new Vector2(352, 18));
 
 
+            //Window
+
+            var buttowindow = PowerButtonCreator.CreateWindowButton(
+            "credits",
+            "CreditsWindow",
+            Resources.Load<Sprite>("ui/icons/iconabout"),
+            UnitworldTab.transform,
+            new Vector2(784, -18)
+            );
+            PowerButtonCreator.AddButtonToTab(buttowindow, UnitworldTab, new Vector2(784, -18));
+
+
+            var buttonAllUnits = PowerButtonCreator.CreateWindowButton(
+            "all_units",
+            "AllUnitsWindow", // Corresponding to your window ID
+            Resources.Load<Sprite>("ui/icons/iconabout"), // Specify the icon
+            UnitworldTab.transform,
+            new Vector2(784, 18)
+            );
+            PowerButtonCreator.AddButtonToTab(buttonAllUnits, UnitworldTab, new Vector2(784, 18));
 
             DropAsset warriorDrop = AssetManager.drops.clone("warrior_drop", "blessing");
             warriorDrop.action_landed = new DropsAction(UnitActionLibrary.action_warrior);
@@ -729,21 +756,15 @@ namespace Unit
             AcidDrop.click_power_brush_action = AssetManager.powers.loopWithCurrentBrushPower;
             AssetManager.powers.add(AcidDrop);
 
-            // Localization (Optional: Adjust as needed)
-            LocalizationUtility.addTraitToLocalizedLibrary(AcidDrop.dropID, "Corrosive acid drop");
-
             // Create Button for Acid Drop
             var buttonAcidDrop = PowerButtonCreator.CreateGodPowerButton(
                 "spawnAcidDrop",
-                Resources.Load<Sprite>("ui/Icons/iconJungle.png"), // Make sure the path is correct to the acid icon
+                Resources.Load<Sprite>("ui/Icons/iconJungle.png"),
                 UnitworldTab.transform,
-                new Vector2(712, -18) // Adjust the position as necessary
+                new Vector2(712, -18)
             );
-
-            // Add Button to the Tab
             PowerButtonCreator.AddButtonToTab(buttonAcidDrop, UnitworldTab, new Vector2(712, -18));
 
-            // Create Custom Molten Rock Drop
             var BloodPool = new DropAsset();
             BloodPool.id = "molten_rock_drop";
             BloodPool.default_scale = 0.2f;
@@ -764,32 +785,13 @@ namespace Unit
             BloodPoolPower.click_power_brush_action = action_zelkova;
             AssetManager.powers.add(BloodPoolPower);
 
-            // Localization (Optional)
-            LocalizationUtility.addTraitToLocalizedLibrary(BloodPoolPower.dropID, "Fiery molten rock drop!");
-
-            // Create Button for Molten Rock Drop
             var buttonBloodPool = PowerButtonCreator.CreateGodPowerButton(
                 "spawnBloodPool",
                 Resources.Load<Sprite>("ui/Icons/iconJungle.png"),
                 UnitworldTab.transform,
                 new Vector2(712, 18)
             );
-
-            // Add Button to the Tab
             PowerButtonCreator.AddButtonToTab(buttonBloodPool, UnitworldTab, new Vector2(712, 18));
-        }
-
-        // Updated method to match PowerActionWithID delegate signature
-        // Updated method to match PowerActionWithID delegate signature
-        public static bool callShowAllUnitsWindow(WorldTile pTile, string pPowerID)
-        {
-            // Only show the window if the correct power ID is triggered
-            if (pPowerID == "show_all_units")
-            {
-                ScrollWindow.showWindow(WINDOW_ALIVE_UNITS_ID);
-                return true;
-            }
-            return false;
         }
 
         public static void action_spawnBloodPoolTile(WorldTile pTile = null, string pDropID = null)
@@ -902,7 +904,6 @@ namespace Unit
                 return false;
             }
         }
-
 
         public static bool CallSpawnUnit(WorldTile pTile, string pPowerID)
         {
