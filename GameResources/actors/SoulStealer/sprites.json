@@ -1,22 +1,182 @@
 {
     "Specific":[{
-        "Path": "walk_0_item.png",
-        "PivotX": 0.0,
-        "PivotY": 0.6
+        "Path": "walk_0.png",
+        "PivotX": 0.5,
+        "PivotY": 0.1
     },
     {
-        "Path": "walk_1_item.png",
-        "PivotX": 0.0,
-        "PivotY": 0.6
+        "Path": "walk_1.png",
+        "PivotX": 0.5,
+        "PivotY": 0.1
     },
     {
-        "Path": "walk_2_item.png",
-        "PivotX": 0.0,
-        "PivotY": 0.6
+        "Path": "walk_2.png",
+        "PivotX": 0.5,
+        "PivotY": 0.0
     },
     {
-        "Path": "walk_3_item.png",
-        "PivotX": 0.0,
-        "PivotY": 0.6
+        "Path": "walk_3.png",
+        "PivotX": 0.5,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "idle_0.png",
+        "PivotX": 0.5,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "idle_1.png",
+        "PivotX": 0.5,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "idle_2.png",
+        "PivotX": 0.5,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "idle_3.png",
+        "PivotX": 0.5,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "mawattack_0.png",
+        "PivotX": 0.7,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "mawattack_1.png",
+        "PivotX": 0.7,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "mawattack_2.png",
+        "PivotX": 0.7,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "mawattack_3.png",
+        "PivotX": 0.7,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "mawattack_4.png",
+        "PivotX": 0.7,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "swim_0.png",
+        "PivotX": 0.7,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "swim_1.png",
+        "PivotX": 0.7,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "swim_2.png",
+        "PivotX": 0.7,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "swim_3.png",
+        "PivotX": 0.7,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "quickattack_0.png",
+        "PivotX": 0.7,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "quickattack_1.png",
+        "PivotX": 0.7,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "quickattack_2.png",
+        "PivotX": 0.7,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "strongattack_0.png",
+        "PivotX": 0.7,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "strongattack_1.png",
+        "PivotX": 0.7,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "strongattack_2.png",
+        "PivotX": 0.7,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "strongattack_3.png",
+        "PivotX": 0.7,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "strongattack_4.png",
+        "PivotX": 0.7,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "strongattack_5.png",
+        "PivotX": 0.7,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "strongattack_6.png",
+        "PivotX": 0.7,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "death_0.png",
+        "PivotX": 0.3,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "death_1.png",
+        "PivotX": 0.3,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "death_2.png",
+        "PivotX": 0.3,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "death_3.png",
+        "PivotX": 0.3,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "death_4.png",
+        "PivotX": 0.3,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "death_5.png",
+        "PivotX": 0.3,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "death_6.png",
+        "PivotX": 0.3,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "death_7.png",
+        "PivotX": 0.3,
+        "PivotY": 0.0
+    },
+    {
+        "Path": "death_8.png",
+        "PivotX": 0.3,
+        "PivotY": 0.0
     }]
 }

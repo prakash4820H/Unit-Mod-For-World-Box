@@ -2,12 +2,12 @@
     "Specific":[{
         "Path": "walk_0.png",
         "PivotX": 0.7,
-        "PivotY": 0.1
+        "PivotY": 0.0
     },
     {
         "Path": "walk_1.png",
         "PivotX": 0.7,
-        "PivotY": 0.1
+        "PivotY": 0.0
     },
     {
         "Path": "walk_2.png",

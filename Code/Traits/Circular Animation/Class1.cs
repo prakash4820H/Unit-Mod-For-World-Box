@@ -7,17 +7,19 @@ public class CircularSpriteEffect : MonoBehaviour
     public float radius = 7f;
     public float speed = 60f;
     public float followSpeed = 30f; // Speed for following the cursor
-    public int initialSpriteCount = 20;
-    public int maxSpriteCount = 500;
+    public int initialSpriteCount = 3;
+    public int maxSpriteCount = 3;
     public float sizeReduction = 0.5f;
     public float gap = 0f;
     public string sortingLayerName = "EffectsTop";
     public float animationSpeed = 0.1f;
     public float attackRange = 20f;
     public float damagePerSecond = 30f;
-    public float unitGap = 3f;
+    public float unitGap = 10f; // Example increased gap for upward offset
+    public float verticalOffset = 2f; // Adjust this for upward/downward movement
 
-    public bool increaseSpritesOnKill = true;
+
+    public bool increaseSpritesOnKill = false;
 
     private List<GameObject> spriteObjects = new List<GameObject>();
     private List<Queue<Vector3>> spritePaths; // Store paths for each sprite
@@ -39,7 +41,7 @@ public class CircularSpriteEffect : MonoBehaviour
         sprites = new List<Sprite>();
         for (int i = 1; i <= 10; i++)
         {
-            Sprite sprite = Resources.Load<Sprite>($"ui/Icons/GG/frame{i}");
+            Sprite sprite = Resources.Load<Sprite>($"ui/Icons/bluefire/frame{i}");
             if (sprite != null)
             {
                 sprites.Add(sprite);
@@ -237,9 +239,11 @@ public class CircularSpriteEffect : MonoBehaviour
         float angleStep = 360f / spriteObjects.Count;
         float angle = Time.time * speed + index * angleStep;
         float x = Mathf.Cos(angle * Mathf.Deg2Rad) * radius;
-        float y = Mathf.Sin(angle * Mathf.Deg2Rad) * radius;
+        float y = Mathf.Sin(angle * Mathf.Deg2Rad) * radius + verticalOffset; // Add vertical offset
+
         spriteObject.transform.position = new Vector3(center.x + x, center.y + y, 0);
     }
+
 
     private void ClearPaths()
     {
@@ -502,9 +506,11 @@ public class CircularSpriteEffect : MonoBehaviour
 
         float angle = (time + index * angleStep) * Mathf.Deg2Rad;
         float x = Mathf.Cos(angle) * (radius + unitGap + index * gap);
-        float y = Mathf.Sin(angle) * (radius + unitGap + index * gap);
+        float y = Mathf.Sin(angle) * (radius + unitGap + index * gap) + verticalOffset; // Add vertical offset
+
         spriteObject.transform.localPosition = new Vector3(x, y, 0);
     }
+
 
     private void AnimateSprites()
     {

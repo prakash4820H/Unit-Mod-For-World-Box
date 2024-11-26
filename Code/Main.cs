@@ -32,6 +32,7 @@ namespace Unit
             ApplyHarmonyPatches();
             InitializeGameComponents();
             InitializeModdedGameObject();
+
         }
 
         void Update()
@@ -118,10 +119,17 @@ namespace Unit
         }
 
         // Function to initialize biomes and tile behaviors
+
+        CloudLibrary customCloudLibrary =new CloudLibrary();
+        EffectsLibrary LibraryBaseEffects = new EffectsLibrary();
         private void InitializeBiomesAndTiles()
         {
             try
             {
+                LibraryBaseEffects.init();
+                LibraryBaseEffects.post_init();
+                customCloudLibrary.init();
+                customCloudLibrary.post_init();
                 UnitBiomes.Init();
                 UnitBiomes.post_init_tiles();
                 UnitBiomes.post_init1();
@@ -159,7 +167,6 @@ namespace Unit
                 CreditsWindow.init();
                 UnitNames.Init();
                 UnitTab.Init();
-                EstablishKingdomTraitInit.Init();
                 UnitButtons.init();
                 UnitItems.Init();
                 EffectsLibrary1.init();

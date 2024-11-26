@@ -63,23 +63,27 @@ namespace Unit
             DragonSlayer.nameTemplate = "dragonslayer_name";
             DragonSlayer.race = "DragonSlayerRace";
             DragonSlayer.kingdom = "DragonSlayerRace";
-            DragonSlayer.base_stats[S.max_age] = 150;
+
+
+            DragonSlayer.base_stats[S.max_age] = 250;
             DragonSlayer.base_stats[S.knockback_reduction] = 10f;
+            DragonSlayer.base_stats[S.critical_chance] = 50;
             DragonSlayer.base_stats[S.attack_speed] = 70f;
-            DragonSlayer.base_stats[S.accuracy] = 0f;
-            DragonSlayer.base_stats[S.health] = 1200;
-            DragonSlayer.base_stats[S.speed] = 35;
-            DragonSlayer.base_stats[S.damage] = 55;
+            DragonSlayer.base_stats[S.knockback] = 0f;
+            DragonSlayer.base_stats[S.accuracy] = 70f;
+            DragonSlayer.base_stats[S.health] = 1500;
+            DragonSlayer.base_stats[S.speed] = 60;
+            DragonSlayer.base_stats[S.damage] = 74;
             DragonSlayer.base_stats[S.targets] = 5;
             DragonSlayer.base_stats[S.dodge] = 0.5f;
-            DragonSlayer.base_stats[S.armor] = 45;
+            DragonSlayer.base_stats[S.armor] = 50;
+            DragonSlayer.defaultAttack = "Catapult";
             DragonSlayer.base_stats[S.scale] = 0.12f;
             //     DragonSlayer.specialDeadAnimation = true;
             DragonSlayer.immune_to_tumor = true;
             DragonSlayer.immune_to_injuries = true;
             //        DragonSlayer.has_override_sprite = true;
             //      DragonSlayer.get_override_sprite = ExampleActorOverrideSprite.get_human_override_sprite;
-
             DragonSlayer.color = Toolbox.makeColor("#000000", -1f);
             DragonSlayer.immune_to_slowness = true;
             DragonSlayer.canBeKilledByDivineLight = false;
@@ -139,6 +143,93 @@ namespace Unit
             DragonSlayerRaceKingdom.default_kingdom_color = new ColorAsset("#BACADD", "#BACADD", "#BACADD");
             AssetManager.kingdoms.add(DragonSlayerRaceKingdom);
             MapBox.instance.kingdoms.CallMethod("newHiddenKingdom", DragonSlayerRaceKingdom);
+
+        }
+
+
+        public static void create_SoulStealer()
+        {
+            var SoulStealer = AssetManager.actor_library.clone("SoulStealer", "_mob");
+            SoulStealer.nameLocale = "SoulStealer";
+            SoulStealer.nameTemplate = "dragonslayer_name";
+            SoulStealer.race = "SoulStealerRace";
+            SoulStealer.kingdom = "SoulStealerRace";
+            SoulStealer.base_stats[S.max_age] = 250;
+            SoulStealer.base_stats[S.knockback_reduction] = 10f;
+            SoulStealer.base_stats[S.critical_chance] = 50;
+            SoulStealer.base_stats[S.attack_speed] = 70f;
+            SoulStealer.base_stats[S.knockback] = 0f;
+            SoulStealer.base_stats[S.accuracy] = 70f;
+            SoulStealer.base_stats[S.health] = 1500;
+            SoulStealer.base_stats[S.speed] = 60;
+            SoulStealer.base_stats[S.damage] = 74;
+            SoulStealer.base_stats[S.targets] = 5;
+            SoulStealer.base_stats[S.dodge] = 0.5f;
+            SoulStealer.base_stats[S.armor] = 50;
+            SoulStealer.base_stats[S.scale] = 0.12f;
+            SoulStealer.immune_to_tumor = true;
+            SoulStealer.immune_to_injuries = true;
+            SoulStealer.color = Toolbox.makeColor("#000000", -1f);
+            SoulStealer.immune_to_slowness = true;
+            SoulStealer.canBeKilledByDivineLight = false;
+            SoulStealer.canBeKilledByLifeEraser = true;
+            SoulStealer.ignoredByInfinityCoin = false;
+            SoulStealer.disableJumpAnimation = true;
+            SoulStealer.canBeMovedByPowers = true;
+            SoulStealer.canTurnIntoZombie = false;
+            SoulStealer.canAttackBuildings = true;
+            SoulStealer.hideFavoriteIcon = false;
+            SoulStealer.can_edit_traits = true;
+            SoulStealer.very_high_flyer = false;
+            SoulStealer.damagedByOcean = false;
+            SoulStealer.swampCreature = false;
+            SoulStealer.damagedByRain = false;
+            SoulStealer.oceanCreature = false;
+            SoulStealer.landCreature = true;
+            SoulStealer.dieOnGround = false;
+            SoulStealer.take_items = false;
+            SoulStealer.use_items = true;
+            SoulStealer.diet_meat = false;
+            SoulStealer.dieInLava = false;
+            SoulStealer.needFood = false;
+            SoulStealer.has_soul = true;
+            SoulStealer.flying = false;
+            SoulStealer.canBeCitizen = true;
+
+            /*
+            SoulStealer.defaultWeapons = List.Of<string>(new string[]
+           {  "MageSlayerSword" });
+            SoulStealer.defaultWeaponsMaterial = List.Of<string>(new string[] { "adamantine" });
+            */
+            SoulStealer.sound_hit = "event:/SFX/HIT/HitMetal";
+            SoulStealer.action_liquid = new WorldAction(ActionLibrary.swimToIsland);
+      //      SoulStealer.animation_walk = "walk_0,walk_1,walk_2,walk_3";
+      //      SoulStealer.animation_swim = "walk_0,walk_1,walk_2,walk_3";
+            SoulStealer.texture_path = "SoulStealer";
+            SoulStealer.icon = "iconSoulStealer";
+            SoulStealer.job = "attacker";
+            AssetManager.actor_library.add(SoulStealer);
+            AssetManager.actor_library.CallMethod("loadShadow", SoulStealer);
+            AssetManager.actor_library.CallMethod("addTrait", "immortal");
+            AssetManager.actor_library.CallMethod("addTrait", "poison_immune");
+            AssetManager.actor_library.CallMethod("addTrait", "acid_proof");
+            AssetManager.actor_library.CallMethod("addTrait", "freeze_proof");
+            AssetManager.actor_library.CallMethod("addTrait", "fire_proof");
+            LocalizationUtility.AddLocalization(SoulStealer.nameLocale, SoulStealer.nameLocale);
+
+
+            KingdomAsset SoulStealerRaceKingdom = new KingdomAsset();
+            SoulStealerRaceKingdom.id = "SoulStealerRace";
+            SoulStealerRaceKingdom.mobs = true;
+            SoulStealerRaceKingdom.addTag("SoulStealerRace");
+            /*SoulStealerRaceKingdom.addTag("good");
+			SoulStealerRaceKingdom.addTag("nature_creature");
+			SoulStealerRaceKingdom.addFriendlyTag("SoulStealerRace");
+			SoulStealerRaceKingdom.addFriendlyTag("MaleVampireRace");
+			SoulStealerRaceKingdom.addFriendlyTag("neutral");/*/
+            SoulStealerRaceKingdom.default_kingdom_color = new ColorAsset("#BACADD", "#BACADD", "#BACADD");
+            AssetManager.kingdoms.add(SoulStealerRaceKingdom);
+            MapBox.instance.kingdoms.CallMethod("newHiddenKingdom", SoulStealerRaceKingdom);
 
         }
 
@@ -422,88 +513,6 @@ namespace Unit
 
         }
 
-        public static void create_SoulStealer()
-        {
-            var SoulStealer = AssetManager.actor_library.clone("SoulStealer", "_mob");
-            SoulStealer.nameLocale = "SoulStealer";
-            SoulStealer.nameTemplate = "dragonslayer_name";
-            SoulStealer.race = "SoulStealerRace";
-            SoulStealer.kingdom = "SoulStealerRace";
-            SoulStealer.base_stats[S.max_age] = 250;
-            SoulStealer.base_stats[S.knockback_reduction] = 10f;
-            SoulStealer.base_stats[S.critical_chance] = 50;
-            SoulStealer.base_stats[S.attack_speed] = 70f;
-            SoulStealer.base_stats[S.knockback] = 0f;
-            SoulStealer.base_stats[S.accuracy] = 70f;
-            SoulStealer.base_stats[S.health] = 1500;
-            SoulStealer.base_stats[S.speed] = 60;
-            SoulStealer.base_stats[S.damage] = 74;
-            SoulStealer.base_stats[S.targets] = 5;
-            SoulStealer.base_stats[S.dodge] = 100f;
-            SoulStealer.base_stats[S.armor] = 50;
-            SoulStealer.base_stats[S.scale] = 0.12f;
-            SoulStealer.immune_to_tumor = true;
-            SoulStealer.immune_to_injuries = true;
-            SoulStealer.color = Toolbox.makeColor("#000000", -1f);
-            SoulStealer.immune_to_slowness = true;
-            SoulStealer.canBeKilledByDivineLight = false;
-            SoulStealer.canBeKilledByLifeEraser = true;
-            SoulStealer.ignoredByInfinityCoin = false;
-            SoulStealer.disableJumpAnimation = true;
-            SoulStealer.canBeMovedByPowers = true;
-            SoulStealer.canTurnIntoZombie = false;
-            SoulStealer.canAttackBuildings = true;
-            SoulStealer.hideFavoriteIcon = false;
-            SoulStealer.can_edit_traits = true;
-            SoulStealer.very_high_flyer = false;
-            SoulStealer.damagedByOcean = false;
-            SoulStealer.swampCreature = false;
-            SoulStealer.damagedByRain = false;
-            SoulStealer.oceanCreature = false;
-            SoulStealer.landCreature = true;
-            SoulStealer.dieOnGround = false;
-            SoulStealer.take_items = false;
-            SoulStealer.use_items = true;
-            SoulStealer.diet_meat = false;
-            SoulStealer.dieInLava = false;
-            SoulStealer.needFood = false;
-            SoulStealer.has_soul = true;
-            SoulStealer.flying = false;
-            SoulStealer.canBeCitizen = true;
-            SoulStealer.defaultWeapons = List.Of<string>(new string[]
-           {  "MageSlayerSword" });
-            SoulStealer.defaultWeaponsMaterial = List.Of<string>(new string[] { "adamantine" });
-            SoulStealer.sound_hit = "event:/SFX/HIT/HitMetal";
-            SoulStealer.action_liquid = new WorldAction(ActionLibrary.swimToIsland);
-            SoulStealer.animation_walk = "walk_0,walk_1,walk_2,walk_3";
-            SoulStealer.animation_swim = "walk_0,walk_1,walk_2,walk_3";
-            SoulStealer.texture_path = "SoulStealer";
-            SoulStealer.icon = "iconSoulStealer";
-            SoulStealer.job = "attacker";
-            AssetManager.actor_library.add(SoulStealer);
-            AssetManager.actor_library.CallMethod("loadShadow", SoulStealer);
-            AssetManager.actor_library.CallMethod("addTrait", "immortal");
-            AssetManager.actor_library.CallMethod("addTrait", "poison_immune");
-            AssetManager.actor_library.CallMethod("addTrait", "acid_proof");
-            AssetManager.actor_library.CallMethod("addTrait", "freeze_proof");
-            AssetManager.actor_library.CallMethod("addTrait", "fire_proof");
-            LocalizationUtility.AddLocalization(SoulStealer.nameLocale, SoulStealer.nameLocale);
-
-
-            KingdomAsset SoulStealerRaceKingdom = new KingdomAsset();
-            SoulStealerRaceKingdom.id = "SoulStealerRace";
-            SoulStealerRaceKingdom.mobs = true;
-            SoulStealerRaceKingdom.addTag("SoulStealerRace");
-            /*SoulStealerRaceKingdom.addTag("good");
-			SoulStealerRaceKingdom.addTag("nature_creature");
-			SoulStealerRaceKingdom.addFriendlyTag("SoulStealerRace");
-			SoulStealerRaceKingdom.addFriendlyTag("MaleVampireRace");
-			SoulStealerRaceKingdom.addFriendlyTag("neutral");/*/
-            SoulStealerRaceKingdom.default_kingdom_color = new ColorAsset("#BACADD", "#BACADD", "#BACADD");
-            AssetManager.kingdoms.add(SoulStealerRaceKingdom);
-            MapBox.instance.kingdoms.CallMethod("newHiddenKingdom", SoulStealerRaceKingdom);
-
-        }
 
         public static void create_ArchMage()
         {

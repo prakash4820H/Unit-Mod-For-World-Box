@@ -44,6 +44,7 @@ namespace Unit
             WE.limit = 0;
             AssetManager.effects_library.add(WE);
 
+            /*
             EffectAsset MC = new EffectAsset();
             MC.id = "fx_wind_trail_t";
             //MC.prefab_id = "effects/prefabs/PrefabWave";
@@ -56,6 +57,7 @@ namespace Unit
             MC.limit = 0;
             AssetManager.effects_library.add(MC);
 
+            */
             EffectAsset BC = new EffectAsset();
             BC.id = "fx_dark_trail_t";
             BC.use_basic_prefab = true;

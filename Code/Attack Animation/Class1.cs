@@ -99,8 +99,8 @@ namespace Unit
 
             // Adding multiple attack sets dynamically for "DragonSlayer"
             mobAnimations["DragonSlayer"].AddAttackSet("attack_0,attack_1,attack_2,attack_3");
-            mobAnimations["DragonSlayer"].AddAttackSet("a1,a2,a3");
-            mobAnimations["DragonSlayer"].AddAttackSet("lol1,lol2,lol3");
+            mobAnimations["DragonSlayer"].AddAttackSet("attack_0,attack_1,attack_2,attack_3");
+            mobAnimations["DragonSlayer"].AddAttackSet("attack_0,attack_1,attack_2,attack_3");
 
             mobAnimations["newone"] = new MobAnimationData("newone")
             {
@@ -114,6 +114,21 @@ namespace Unit
             mobAnimations["newone"].AddAttackSet("attack_0,attack_1,attack_2,attack_3,attack_4,attack_5,attack_6,attack_7,attack_8,attack_9,attack_10,attack_11,attack_12,attack_13");
             mobAnimations["newone"].AddAttackSet("a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11");
             mobAnimations["newone"].AddAttackSet("a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11");
+
+
+            mobAnimations["SoulStealer"] = new MobAnimationData("SoulStealer")
+            {
+                WalkSprites = GenerateSpritePaths("SoulStealer", "walk_0,walk_1,walk_2,walk_3"),
+                SwimSprites = GenerateSpritePaths("SoulStealer", "swim_0,swim_1,swim_2,swim_3"),
+                IdleSprites = GenerateSpritePaths("SoulStealer", "idle_0,idle_1,idle_2,idle_3"),
+                DeathSprites = GenerateSpritePaths("SoulStealer", "death_0,death_1,death_2,death_3,death_4,death_5,death_6,death_7,death_8")
+            };
+
+            // Adding multiple attack sets dynamically for "newone"
+            mobAnimations["SoulStealer"].AddAttackSet("mawattack_0,mawattack_1,mawattack_2,mawattack_3,mawattack_4");
+            mobAnimations["SoulStealer"].AddAttackSet("quickattack_0,quickattack_1,quickattack_2");
+            mobAnimations["SoulStealer"].AddAttackSet("strongattack_0,strongattack_1,strongattack_2,strongattack_3,strongattack_4,strongattack_5,strongattack_6");
+            mobAnimations["SoulStealer"].AddAttackSet("swim_0,swim_1,swim_2,swim_3");
 
             foreach (var mob in mobAnimations.Keys)
             {

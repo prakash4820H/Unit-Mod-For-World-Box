@@ -1,4 +1,5 @@
 ﻿
+using NCMS.Utils;
 using NeoModLoader.General;
 using ReflectionUtility;
 using System;
@@ -16,8 +17,12 @@ namespace Unit
 
             loadButtons();
         }
+
+        private PowerLibrary customPowerLibrary;
+
         private static void loadButtons()
         {
+
             PowersTab UnitworldTab = PowerButtonCreator.GetTab("Tab_Unit");
             if (UnitworldTab == null)
             {
@@ -128,6 +133,26 @@ namespace Unit
             );
 
             PowerButtonCreator.AddButtonToTab(bloodSplashButton, UnitworldTab, new Vector2(676, -18));
+
+
+
+            GodPower AmogusCloud = new GodPower();
+            AmogusCloud.id = "AmogusCloud";
+            AmogusCloud.name = "AmogusCloudSpawn";
+            AmogusCloud.forceBrush = "sqr_0";
+            AmogusCloud.click_action = new PowerActionWithID(action_Cloud);
+            AmogusCloud.holdAction = false;
+            AmogusCloud.showToolSizes = false;
+            AmogusCloud.unselectWhenWindow = true;
+            AssetManager.powers.add(AmogusCloud);
+
+            var AmogusCloud2 = PowerButtonCreator.CreateGodPowerButton(
+            "amogusCloudSpawn",
+             Resources.Load<Sprite>("units_embed/units/iconSoulStealer.png"),
+             UnitworldTab.transform,
+             new Vector2(820, -18)
+             );
+            PowerButtonCreator.AddButtonToTab(AmogusCloud2, UnitworldTab, new Vector2(820, -18));
 
 
             var MageHunter = new GodPower();
@@ -792,6 +817,54 @@ namespace Unit
                 new Vector2(712, 18)
             );
             PowerButtonCreator.AddButtonToTab(buttonBloodPool, UnitworldTab, new Vector2(712, 18));
+        }
+
+        private static bool spawngg(WorldTile pTile, string pPower = "")
+        {
+            PowerLibrary customPowerLibrary = new PowerLibrary();
+            customPowerLibrary.spawnCloud(pTile, "cloud_amogus");
+            return true;
+        }
+
+
+        public static bool action_Cloud(WorldTile pTile = null, string pPower = "")
+        {
+            string pType = string.Empty;
+            switch (pPower)
+            {
+                case "mudCloudSpawn":
+                    pType = "cloud_mud";
+                    break;
+                case "amogusCloudSpawn":
+                    pType = "cloud_amogus";
+                    break;
+                case "rainbowCloudSpawn":
+                    pType = "cloud_rainbow";
+                    break;
+                case "falloutCloudSpawn":
+                    pType = "cloud_fallout";
+                    break;
+                case "desecrationCloudSpawn":
+                    pType = "cloud_desecration";
+                    break;
+                case "holyWaterCloudSpawn":
+                    pType = "cloud_holy_water";
+                    break;
+                case "gloryCloudSpawn":
+                    pType = "cloud_glory";
+                    break;
+                case "mannaCloudSpawn":
+                    pType = "cloud_manna";
+                    break;
+                case "crabCloudSpawn":
+                    pType = "cloud_crab";
+                    break;
+            }
+            if (pType != string.Empty)
+            {
+                EffectsLibrary.spawn("fx_cloud", pTile, pType, null, 0f, -1f, -1f);
+            }
+            return true;
         }
 
         public static void action_spawnBloodPoolTile(WorldTile pTile = null, string pDropID = null)

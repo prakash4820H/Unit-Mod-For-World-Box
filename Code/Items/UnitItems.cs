@@ -282,6 +282,12 @@ namespace Unit
             LocalizationUtility.AddLocalization("item_DemonStaff", "Lord Staff");
             addGunsSprite(DemonStaff.id, DemonStaff.materials[0]);
 
+            ItemAsset Catapult = AssetManager.items.clone("Catapult", "_melee");
+            Catapult.id = "Catapult";
+        //    Catapult.projectile = "plasma_ball";
+            Catapult.materials = List.Of<string>(new string[] { "base" });
+            Catapult.path_slash_animation = "effects/dragonslayerslash";
+
 
 
             ItemAsset LordStaff = AssetManager.items.clone("LordStaff", "_range");
